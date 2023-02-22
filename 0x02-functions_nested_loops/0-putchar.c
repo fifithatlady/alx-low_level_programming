@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include "main.h"
 
 /**
@@ -16,5 +17,17 @@ int main(void)
 	_putchar('a');
 	_putchar('r');
 	_putchar('\n');
+=======
+#include <stdio.h>
+
+/**
+ * main - Enrty point
+ *
+ * Return: Always 0
+ */
+int main(void)
+{
+	printf("_putchar\n");
+>>>>>>> 6751892437febc2b6916ec9b3f5dfad3865e46c7
 	return (0);
 }
