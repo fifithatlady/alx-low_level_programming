@@ -1,20 +1,17 @@
-#include <stdio.h>
+#include <iostream>
+using namespace std;
 
-int main(void)
-{
-  int n1 = 1;
-  int n2 = 2;
-  int n3;
-  int i;
+int main() {
+  int a = 1, b = 2, c, i;
 
-  printf("%d, %d", n1, n2);
+  cout << a << ", " << b;
 
   for (i = 3; i <= 98; i++) {
-    n3 = n1 + n2;
-    printf(", %d", n3);
-    n1 = n2;
-    n2 = n3;
+    c = a + b;
+    cout << ", " << c;
+    a = b;
+    b = c;
   }
-  printf("\n");
-  return (0);
+  cout << endl;
+  return 0;
 }
