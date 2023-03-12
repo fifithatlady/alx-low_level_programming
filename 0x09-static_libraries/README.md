@@ -29,3 +29,4 @@ In this project i learnt and practiced;
   included in `libmy.a`.
 * [create_static_lib.sh](./create_static_lib.sh): Bash script that creates a static
   library called `liball.a` from all the `.c` files in the current directory.
+"README.md" 31L, 1424C                        
