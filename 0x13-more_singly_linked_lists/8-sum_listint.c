@@ -6,14 +6,19 @@
  *
  * Return: sum of all the data (n) of a listint_t linked list
  */
+
 int sum_listint(listint_t *head)
+
 {
 	int sum = 0;
-while (head != NULL)
+
+	if (head == NUll)
+		return (0);
+
+	while (head != NULL)
 	{
-		sum += head->n;
+	       	sum += head->n;
 		head = head->next;
 	}
-	return (sum);  if	(head == NULL)
-		return (0);
+	return (sum);
 }

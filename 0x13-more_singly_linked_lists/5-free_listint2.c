@@ -12,15 +12,12 @@ void free_listint2(listint_t **head)
 
 	if (head != NULL)
 	{
-	                immedeate_v = *head;
-		while ((tmp  = immedeate_v) != NULL)
-		{
-			immedeate_v= immedeate_v->next;
+	       	immedeate_v = *head;
+	while ((tmp  = immedeate_v) != NULL)
+	{
+		immedeate_v = immedeate_v->next
 			free(tmp);
-		}
-
-		*head = NULL;
+	}
+	*head = NULL;
 	}
 }
-/*
-$-immedeate */
