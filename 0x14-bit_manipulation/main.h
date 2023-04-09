@@ -1,5 +1,5 @@
-#ifndef
-#define
+#ifndef _HOLBERTON_H_
+#define _HOLBERTON_H_
 
 #include <stdio.h>
 #include <unistd.h>
@@ -13,4 +13,6 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m);
 int _putchar(char)
 int get_endianness(void);
 unsigned int flip_bits(unsigned long int n, unsigned long int m);
+
+
 #endif
