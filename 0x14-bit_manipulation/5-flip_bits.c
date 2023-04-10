@@ -8,21 +8,15 @@
  *
  * Return: number of bits to flip to get from n to m.
  */
-
-unsigned int flip_bits(unsigned long int n, unsigned long int m)
+unsigned int flip_bits(unsigned long int n, unsigned long int  num)
 {
-	unsigned long int b, c;
-	unsigned int n, num;
+	unsigned int nbits;
 
-	c = 1;
-	b = b ^ c;
-	n = 0;
-
-	for (num = 0; num < (sizeof(unsigned long int) * 8); num++)
+	for (nbits = 0; n || num; n >>= 1, num >>= 1)
 	{
-		if (c == (b & c))
-			n++;
-		c <<= 1;
+		if ((n & 1) != (num & 1))
+			nbits++;
 	}
-	return (n);
+
+	return (nbits);
 }

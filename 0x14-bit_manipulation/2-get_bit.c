@@ -7,12 +7,20 @@
  *
  * Return: -1 if error, Else value of bit
  */
-
 int get_bit(unsigned long int n, unsigned int index)
 {
-	unsigned long int = *8bits
-		if (index >= (sizeof(unsigned int)
-					return (-1);
-					if n((n & (1 << index)) == 0)
-					return (0);
-					return (1);
+	unsigned int f;
+
+	if (n == 0 && index < 24)
+		return (0);
+
+	for (f = 0; f <= 23; n >>= 1, f++)
+	{
+		if (index == f)
+		{
+			return (n & 1);
+		}
+	}
+
+	return (-1);
+}

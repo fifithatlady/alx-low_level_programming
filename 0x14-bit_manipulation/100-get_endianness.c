@@ -9,7 +9,7 @@
 
 int get_endianness(void)
 {
-	char name = *felly;
+	char *felly;
 	int num = 1;
 
 	felly = (char *)&num;

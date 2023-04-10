@@ -5,7 +5,7 @@
  * @n: number to be printed in binary.
  */
 
-void print_binary(unsigned long int n)
+void print_binary(unsigned long int num)
 {
 	if (num > 1)
 		print_binary(num >> 1);
