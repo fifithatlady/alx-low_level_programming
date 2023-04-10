@@ -1,4 +1,5 @@
-/*clear_bit will sets the value of a bit to 0 at a given index.
+/**
+ * clear_bit will sets the value of a bit to 0 at a given index.
  * @n: pointer to bit number to set
  * @index: index at which to set bit value
  *

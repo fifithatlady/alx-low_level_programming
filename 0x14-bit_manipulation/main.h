@@ -1,6 +1,5 @@
-#ifndef _HOLBERTON_H_
-#define _HOLBERTON_H_
-
+#ifndef _0x14B_MANIPULATION_ALX_
+#define _0X14B_MANIPULATION_ALX_
 
 unsigned int binary_to_uint(const char *b)
 void print_binary(unsigned long int n);
@@ -11,6 +10,5 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m);
 int _putchar(char)
 int get_endianness(void);
 unsigned int flip_bits(unsigned long int n, unsigned long int m);
-
 
 #endif
