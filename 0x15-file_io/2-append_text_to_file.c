@@ -21,7 +21,7 @@ size_t _strlen(char *str)
 }
 
 /**
- * appendText_to_file - Appends text at the end of a file.
+ * append_text_to_file - Appends text at the end of a file.
  * @filename: A pointer to the name of the file.
  * @textContent: The string to add to the end of the file.
  *
@@ -30,7 +30,7 @@ size_t _strlen(char *str)
  *         Else 1.
  */
 
-int appendText_to_file(const char *filename, char *textContent)
+int append_text_to_file(const char *filename, char *textContent)
 {
 	int fd;
 	ssize_t l;

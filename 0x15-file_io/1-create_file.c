@@ -5,14 +5,14 @@
 #include <fcntl.h>
 
 /**
- * createFile - creates a file.
+ * create_file - creates a file.
  * @filename: name of the file to create
  * @textContent: NULL terminated string to write to the file
  *
  * Return: -1 if failure else 1
  */
 
-int createFile(const char *filename, char *textContent)
+int create_file(const char *filename, char *textContent)
 {
 	int d, z;
 	int len = 0;
