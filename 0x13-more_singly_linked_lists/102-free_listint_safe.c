@@ -1,72 +1,64 @@
 #include "lists.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 /**
- * free_listp2 - free linked list
- * @head: begining/head of a list.
+ * _ra - reallocates memory 
+ * @list: to append
+ * @size: size of  new list 
+ * @new: new node  ading to the list
  *
- * Return: nothing to return.
+ * Return: pointer to  new
  */
-void free_listp2(listp_t **head)
+listint_t **_ra(listint_t **list, size_t size, listint_t *newnode)
 {
-	listp_t *temperary;
-	listp_t *curent;
+	listint_t **newlist;
+	size_t num;
 
-	if (head != NULL)
+	newlist = malloc(size * sizeof(listint_t *));
+	if (newlist == NULL)
 	{
-		curent = *head;
-		while ((temperary = curent) != NULL)
-		{
-			curr = curent->next;
-			free(temperary);
-		}
-		*head = NULL;
+		free(list);
+		exit(98);
 	}
+	for (num = 0; num < size - 1; num++)
+		newlist[num] = list[num];
+	newlist[num] = newnode;
+	free(list);
+	return (newlist);
 }
 
 /**
- * free_listint_safe - free linked list.
- * @h:start head of a list.
+ * free_listint_safe - free linked list in a more safe way
+ * @head: double pointer to head address of the list
  *
- * Return: size of freed lists.
+ * Return:  num of nodes  the list
  */
-size_t free_listint_safe(listint_t **h)
+size_t free_listint_safe(listint_t **head)
 {
-	size_t nnodes = 0;
-	listp_t *hptrr, *newnode, *add;
-	listint_t *curent;
+	size_t num, nnum = 0;
+	listint_t **list = NULL;
+	listint_t *next;
 
-	hptrr = NULL;
-	while (*h != NULL)
+	if (head == NULL || *head == NULL)
+		return (nnum);
+	while (*head != NULL)
 	{
-		newnode = malloc(sizeof(listp_t));
-
-		if (newnode == NULL)
-			exit(98);
-
-		newnode->pointer = (void *)*h;
-		newnode->next = hptrr;
-		hptrr = newnode;
-
-		add = hptrr;
-
-		while (add->next != NULL)
+		for (num = 0; num < nnum; num++)
 		{
-			add = add->next;
-			if (*h == add->pointer)
+			if (*head == list[num])
 			{
-				*h = NULL;
-				free_listp2(&hptrr);
-				return (numnodes);
+				*head = NULL;
+				free(list);
+				return (nnum);
 			}
 		}
-
-		curent = *h;
-		*h = (*h)->next;
-		free(curr);
-		numnodes++;
+		nnum++;
+		list = _ra(list, nnum, *head);
+		next = (*head)->next;
+		free(*head);
+		*head = next;
 	}
-
-	*h = NULL;
-	free_listp2(&hptrr);
-	return (numnodes);
+	free(list);
+	return (nnum);
 }

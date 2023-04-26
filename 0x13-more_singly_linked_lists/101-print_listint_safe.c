@@ -1,69 +1,61 @@
 #include "lists.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 /**
- * free_listp - free  linked list.
- * @head: start of linked list
+ * _r - reallocates memory to pointer array
+ * @list: to append
+ * @size: size of the new list 
+ * @new: new node  adding to  list
  *
- * Return:  return n/l
+ * Return: pointer to the new list
  */
-void free_listp(listp_t **head)
+const listint_t **_r(const listint_t **list, size_t size, const listint_t *newnode)
 {
-	listp_t *temperary;
-	listp_t *current;
+	const listint_t **newlist;
+	size_t num;
 
-	if (head != NULL)
+	newlist = malloc(size * sizeof(listint_t *));
+	if (newlist == NULL)
 	{
-		current = *head;
-		while ((temperary = current) != NULL)
-		{
-			current = current->next;
-			free(temperary);
-		}
-		*head = NULL;
+		free(list);
+		exit(98);
 	}
+	for (num = 0; num < size - 1; num++)
+		newlist[num] = list[num];
+	newlist[num] = newnode;
+	free(list);
+	return (newlist);
 }
 
 /**
- * print_listint_safe - print linked list.
- * @head: start/head of a list.
+ * print_listint_safe - prints linked list.
+ * @head: *head lists
  *
- * Return: num of nodes in the list.
+ * Return: num(nodes)
  */
+
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t nodes = 0;
-	listp_t *hptrr, *newnode, *add;
+	size_t num, nnum = 0;
+	const listint_t **list = NULL;
 
-	hptrr = NULL;
 	while (head != NULL)
 	{
-		newnode = malloc(sizeof(listp_t));
-
-		if (newnode == NULL)
-			exit(98);
-
-		newnode->pointer = (void *)head;
-		newnode->next = hptrr;
-		hptrr = newnode;
-
-		add = hptrr;
-
-		while (add->next != NULL)
+		for (num = 0; num < nnum; num++)
 		{
-			add = add->next;
-			if (head == add->pointer)
+			if (head == list[num])
 			{
 				printf("-> [%p] %d\n", (void *)head, head->n);
-				free_listp(&hptrr);
-				return (nodes);
+				free(list);
+				return (nnum);
 			}
 		}
-
-		printf("[%p] %d\n", (void *)head, head->node);
+		nnum++;
+		list = _r(list, nnum, head);
+		printf("[%p] %d\n", (void *)head, head->n);
 		head = head->next;
-		nodes++;
 	}
-
-	free_listp(&hptrr);
-	return (nodes);
+	free(list);
+	return (nnum);
 }
