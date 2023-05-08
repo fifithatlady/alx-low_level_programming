@@ -187,7 +187,7 @@ void print_abi(unsigned char *e_ident)
 }
 
 /**
- * print_type - Prints the type 
+ * print_type - Prints the type
  * @e_type:  ELF type.
  * @e_ident: A pointer to an array containing the ELF class.
  */
@@ -260,7 +260,7 @@ void close_elf(int elf)
 }
 
 /**
- * main -shows information contained in  ELF header at the start of an ELF file.
+ * main -shows infor contained in  ELF header at e start of an ELF file.
  * @argc: num of arguments supplied to the program.
  * @argv: array of pointers to the arguments.
  *
