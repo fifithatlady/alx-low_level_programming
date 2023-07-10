@@ -24,20 +24,20 @@ void check97(int argc)
  * check98 - checks that fileFrom exists and can be read
  * @check: checks if true or false
  * @file: fileFrom name
- * @fdFrom: file descriptors of file_from, or -1
- * @fdTo: file descriptors of file_to, or -1
+ * @fd_From: file descriptors of file_from, or -1
+ * @fd_To: file descriptors of file_to, or -1
  *
  * Return: void
  */
-void check98(ssize_t check, char *file, int fdFrom, int fdTo)
+void check98(ssize_t check, char *file, int fd_From, int fd_To)
 {
 	if (check == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file);
-		if (fdFrom != -1)
-			close(fdFrom);
-		if (fdTo != -1)
-			close(fdTo);
+		if (fd_From != -1)
+			close(fd_From);
+		if (fd_To != -1)
+			close(fd_To);
 		exit(98);
 	}
 }
