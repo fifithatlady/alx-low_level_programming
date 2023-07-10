@@ -21,23 +21,23 @@ void check97(int argc)
 }
 
 /**
- * check98 - checks that fileFrom exists and can be read
- * @check: checks if true or false
- * @file: fileFrom name
- * @fdFrom: file descriptors of file_from, or -1
- * @fdTo: file descriptors of file_to, or -1
+ * check98 - checks that file_from exists and can be read
+ * @check: checks if true of false
+ * @file: file_from name
+ * @fd_from: file descriptor of file_from, or -1
+ * @fd_to: file descriptor of file_to, or -1
  *
  * Return: void
  */
-void check98(ssize_t check, char *file, int fdFrom, int fdTo)
+void check98(ssize_t check, char *file, int fd_from, int fd_to)
 {
 	if (check == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file);
-		if (fdFrom != -1)
-			close(fdFrom);
-		if (fdTo != -1)
-			close(fdTo);
+		if (fd_from != -1)
+			close(fd_from);
+		if (fd_to != -1)
+			close(fd_to);
 		exit(98);
 	}
 }
@@ -80,7 +80,7 @@ void check100(int check, int fd)
 	}
 }
 /**
- * main - copies the content of a file to another file.
+ * main - opies the content of a file to another file.
  * @argc: number of arguments passed
  * @argv: array of pointers to the arguments
  *
@@ -89,7 +89,7 @@ void check100(int check, int fd)
 int main(int argc, char *argv[])
 {
 	int fd_from, fd_to, close_to, close_from;
-	ssize_t lenk, lene;
+	ssize_t lenr, lenw;
 	char buffer[1024];
 	mode_t file_perm;
 
@@ -99,15 +99,15 @@ int main(int argc, char *argv[])
 	file_perm = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 	fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, file_perm);
 	check99((ssize_t)fd_to, argv[2], fd_from, -1);
-	lenk = 1024;
-	while (lenk == 1024)
+	lenr = 1024;
+	while (lenr == 1024)
 	{
-		lene = read(fd_from, buffer, 1024);
-		check98(lenk, argv[1], fd_from, fd_to);
-		lene = write(fd_to, buffer, lene);
-		if (lenk != lene)
-			lenk = -1;
-		check99(lenk, argv[2], fd_from, fd_to);
+		lenr = read(fd_from, buffer, 1024);
+		check98(lenr, argv[1], fd_from, fd_to);
+		lenw = write(fd_to, buffer, lenr);
+		if (lenw != lenr)
+			lenw = -1;
+		check99(lenw, argv[2], fd_from, fd_to);
 	}
 	close_to = close(fd_to);
 	close_from = close(fd_from);
@@ -115,4 +115,3 @@ int main(int argc, char *argv[])
 	check100(close_from, fd_from);
 	return (0);
 }
-
